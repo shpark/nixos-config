@@ -14,7 +14,7 @@
     linux_custom_pkg = { fetchurl, buildLinux, ... }@args:
 
       buildLinux (args // rec {
-        version = "6.4-rc2-fix";
+        version = "6.4.0-rc2-fix";
         modDirVersion = version;
 
         src = fetchurl {
@@ -26,7 +26,7 @@
 
         extraConfig = "";
 
-        extraMeta.branch = "6.4-rc2";
+        extraMeta.branch = "6.4.0-rc2";
       } // (args.argsOverride or {}));
 
     linux_custom = pkgs.callPackage linux_custom_pkg{};
