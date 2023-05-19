@@ -11,7 +11,7 @@
   boot.extraModulePackages = [ ];
 
   boot.kernelPackages = let
-    linux_custom_pkg = { fetchrul, buildLinux, ... }@args:
+    linux_custom_pkg = { fetchurl, buildLinux, ... }@args:
 
       buildLinux (args // rec {
         version = "6.4-rc2-fix";
