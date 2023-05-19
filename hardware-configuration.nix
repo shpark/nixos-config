@@ -17,7 +17,7 @@
         version = "6.4-rc2-fix";
         modDirVersion = version;
 
-        src = fetchrul {
+        src = fetchurl {
           url = "https://github.com/shpark/linux/archive/refs/tags/v6.4-rc2-fix.tar.gz";
           sha256 = "1fz41p7krwsfvfja60wrlg9pmdiczgqklvfri5a3nk0pvg61gryz";
         };
