@@ -5,7 +5,7 @@
     nixosConfigurations.rockpro64 = nixpkgs.lib.nixosSystem {
       modules = [
         vscode-server.nixosModule
-	./configuration.nix
+        ./configuration.nix
       ];
     };
   };

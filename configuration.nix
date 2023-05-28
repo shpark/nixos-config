@@ -15,7 +15,7 @@
   # Enables the generation of /boot/extlinux/extlinux.conf
   boot.loader.generic-extlinux-compatible.enable = true;
 
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
@@ -134,8 +134,16 @@
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDcJhbD5ye419V78iySyGA46Rgb+23UTuzI3Yocri71n shpark1@protonmail.com" ];
   };
 
+  programs.tmux = {
+    enable = true;
+    extraConfig = ''
+    set-window-option -g mode-keys vi
+    set -g history-limit 80000
+    '';
+  };
+
   environment.systemPackages = with pkgs; [
-    tmux vim git ripgrep wget bear direnv
+    vim git ripgrep wget bear direnv
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

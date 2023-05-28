@@ -10,28 +10,28 @@
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
-  boot.kernelPackages = let
-    linux_custom_pkg = { fetchurl, buildLinux, ... }@args:
+  # boot.kernelPackages = let
+  #   linux_custom_pkg = { fetchurl, buildLinux, ... }@args:
 
-      buildLinux (args // rec {
-        version = "6.4.0-rc2-fix";
-        modDirVersion = version;
+  #     buildLinux (args // rec {
+  #       version = "6.4.0-rc2";
+  #       modDirVersion = version;
 
-        src = fetchurl {
-          url = "https://github.com/shpark/linux/archive/refs/tags/v6.4-rc2-fix.tar.gz";
-          sha256 = "1fz41p7krwsfvfja60wrlg9pmdiczgqklvfri5a3nk0pvg61gryz";
-        };
+  #       src = fetchurl {
+  #         url = "https://github.com/shpark/linux/archive/refs/tags/v6.4-rc2-fix.tar.gz";
+  #         sha256 = "1fz41p7krwsfvfja60wrlg9pmdiczgqklvfri5a3nk0pvg61gryz";
+  #       };
 
-        kernelPatches = [];
+  #       kernelPatches = [];
 
-        extraConfig = "";
+  #       extraConfig = "";
 
-        extraMeta.branch = "6.4.0-rc2";
-      } // (args.argsOverride or {}));
+  #       extraMeta.branch = "6.4.0-rc2";
+  #     } // (args.argsOverride or {}));
 
-    linux_custom = pkgs.callPackage linux_custom_pkg{};
-  in
-    pkgs.recurseIntoAttrs (pkgs.linuxPackagesFor linux_custom);
+  #   linux_custom = pkgs.callPackage linux_custom_pkg{};
+  # in
+  #   pkgs.recurseIntoAttrs (pkgs.linuxPackagesFor linux_custom);
 
   fileSystems."/" =
     { device = "/dev/disk/by-label/nixos";
